@@ -7,11 +7,12 @@
     "jsx": "react",
     "esModuleInterop": true,
     "sourceMap": true,
-    "baseUrl": "./",
+    "skipLibCheck": true,
+    "declaration": true,
     "strict": true,
+    "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"],
-      "@@/*": ["src/.umi/*"]
+      "@zhp-fe/ui": ["src/index.ts"]
     },
     "allowSyntheticDefaultImports": true
   },

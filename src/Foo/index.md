@@ -4,7 +4,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from 'zhp-fe-ui';
+import { Foo } from '@zhp-fe/ui';
 
 export default () => <Foo title="First Demo" />;
 ```
