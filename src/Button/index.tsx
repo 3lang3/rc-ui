@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { CircularIcon as Loader } from '../Toast/Loader';
 import cn from 'classnames';
+import { createNamespace } from '../utils';
 import './button.less';
+
+const [name] = createNamespace('button');
 
 interface ButtonProps {
   size?: 'normal' | 'small' | 'large' | 'mini';
@@ -29,10 +32,10 @@ export default ({
   disabled,
   onClick,
 }: ButtonProps) => {
-  const cls = cn('local-button', `local-button--${size}`, `local-button--${type}`, className, {
-    'local-button--round': round,
-    'local-button--disabled': disabled,
-    'local-button--loading': loading,
+  const cls = cn(name, `zhp-button--${size}`, `zhp-button--${type}`, className, {
+    'zhp-button--round': round,
+    'zhp-button--disabled': disabled,
+    'zhp-button--loading': loading,
     block,
   });
 
@@ -43,8 +46,8 @@ export default ({
 
   return (
     <div className={cls} onClick={handleClick} style={style}>
-      <div className="local-button__content">
-        {loading && <Loader className="local-button__loader" />}
+      <div className="zhp-button__content">
+        {loading && <Loader className="zhp-button__loader" />}
         {children}
       </div>
     </div>
