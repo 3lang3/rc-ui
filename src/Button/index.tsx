@@ -91,17 +91,20 @@ const Button = ({
     return <Loader className={bem('icon')} {...loaderProps} />;
   };
 
-  const colorStyle = {} as React.CSSProperties;
+  const customStyle = {} as React.CSSProperties;
   if (color) {
-    colorStyle.color = ghost ? color : '#fff';
-    colorStyle.background = ghost ? 'transparent' : color;
-    if (!color.includes('gradient')) {
-      colorStyle.borderColor = color;
+    customStyle.color = ghost ? color : '#fff';
+    customStyle.background = ghost ? 'transparent' : color;
+    // hide border when color is linear-gradient
+    if (color.includes('gradient')) {
+      customStyle.border = 0;
+    } else {
+      customStyle.borderColor = color;
     }
   }
 
   return (
-    <div className={cls} onClick={handleClick} style={{ ...style, ...colorStyle }}>
+    <div className={cls} onClick={handleClick} style={{ ...style, ...customStyle }}>
       <div className={bem('content')}>
         {loading && renderLoader()}
         <div className={bem('text')}>{children}</div>
