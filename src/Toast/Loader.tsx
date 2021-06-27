@@ -1,7 +1,16 @@
 import React from 'react';
+import cls from 'classnames';
 
-export const CircularIcon = (props: React.SVGAttributes<any>) => (
-  <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#fff">
+export const CircularIcon = ({ className, ...props }: React.SVGAttributes<any>) => (
+  <svg
+    width="38"
+    height="38"
+    viewBox="0 0 38 38"
+    xmlns="http://www.w3.org/2000/svg"
+    stroke="#fff"
+    className={cls('zhp-loading__spinner', className)}
+    {...props}
+  >
     <g fill="none" fillRule="evenodd">
       <g transform="translate(1 1)" strokeWidth="2">
         <circle strokeOpacity=".5" cx="18" cy="18" r="18" />

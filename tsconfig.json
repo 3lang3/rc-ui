@@ -10,6 +10,7 @@
     "skipLibCheck": true,
     "declaration": true,
     "strict": true,
+    "noImplicitAny": false,
     "baseUrl": "./",
     "paths": {
       "@zhp-fe/ui": ["src/index.ts"]

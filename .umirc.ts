@@ -10,5 +10,6 @@ export default defineConfig({
     // eslint-disable-next-line
     require('tailwindcss'),
   ],
+  styles: [`body { min-height: 100vh; font-size: 0.26rem; background: #f5f5f5; }`],
   // more config: https://d.umijs.org/config
 });

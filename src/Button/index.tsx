@@ -2,17 +2,44 @@ import * as React from 'react';
 import { CircularIcon as Loader } from '../Toast/Loader';
 import cn from 'classnames';
 import { createNamespace } from '../utils';
-import './button.less';
+import './index.less';
 
-const [name] = createNamespace('button');
+const [name, bem] = createNamespace('button');
 
 interface ButtonProps {
+  /**
+   * 按钮大小
+   */
   size?: 'normal' | 'small' | 'large' | 'mini';
+  /**
+   * 按钮类型
+   */
   type?: 'default' | 'primary';
+  /**
+   * 幽灵按钮
+   */
+  ghost?: boolean;
+  /**
+   * 全宽
+   */
   block?: boolean;
+  /**
+   * 危险按钮
+   */
+  danger?: boolean;
+  /**
+   * 自定义颜色(非ghost按钮下支持渐变色)
+   */
+  color?: string;
   loading?: boolean;
+  /**
+   * 圆角按钮
+   */
   round?: boolean;
   icon?: React.ReactNode;
+  /**
+   * 禁用状态
+   */
   disabled?: boolean;
   className?: string;
   style?: React.CSSProperties;
@@ -20,36 +47,69 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-export default ({
+const Button = ({
   children,
   loading,
-  block,
+  block = true,
   round,
   size = 'normal',
   type = 'default',
+  danger,
+  color,
+  ghost,
   className,
   style,
   disabled,
   onClick,
 }: ButtonProps) => {
-  const cls = cn(name, `zhp-button--${size}`, `zhp-button--${type}`, className, {
-    'zhp-button--round': round,
-    'zhp-button--disabled': disabled,
-    'zhp-button--loading': loading,
-    block,
-  });
+  const cls = cn(
+    className,
+    bem([
+      type,
+      size,
+      {
+        block,
+        round,
+        danger,
+        ghost,
+        loading,
+        disabled,
+      },
+    ]),
+  );
 
   const handleClick = React.useCallback(() => {
     if (onClick && !loading && !disabled) onClick();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading]);
 
+  const renderLoader = () => {
+    const loaderProps = {} as any;
+    if (color) {
+      loaderProps.stroke = color;
+    }
+    return <Loader className={bem('icon')} {...loaderProps} />;
+  };
+
+  const colorStyle = {} as React.CSSProperties;
+  if (color) {
+    colorStyle.color = ghost ? color : '#fff';
+    colorStyle.background = ghost ? 'transparent' : color;
+    if (!color.includes('gradient')) {
+      colorStyle.borderColor = color;
+    }
+  }
+
   return (
-    <div className={cls} onClick={handleClick} style={style}>
-      <div className="zhp-button__content">
-        {loading && <Loader className="zhp-button__loader" />}
-        {children}
+    <div className={cls} onClick={handleClick} style={{ ...style, ...colorStyle }}>
+      <div className={bem('content')}>
+        {loading && renderLoader()}
+        <div className={bem('text')}>{children}</div>
       </div>
     </div>
   );
 };
+
+Button.displayName = name;
+
+export default Button;
