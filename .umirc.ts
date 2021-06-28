@@ -10,6 +10,8 @@ export default defineConfig({
     // eslint-disable-next-line
     require('tailwindcss'),
   ],
-  styles: [`body { min-height: 100vh; font-size: 0.26rem; background: #f5f5f5; }`],
+  styles: [
+    `.__dumi-default-mobile-demo-layout { min-height: 100vh; font-size: 0.26rem; padding: 0 !important; }`,
+  ],
   // more config: https://d.umijs.org/config
 });

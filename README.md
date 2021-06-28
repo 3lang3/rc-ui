@@ -3,7 +3,7 @@
 ## todo list
 
 - [x] Button 按钮
-- [ ] Image 图片(样式、文档待完善...)
+- [x] Image 图片
 - [ ] List 列表(样式、文档待完善...)
 - [ ] ListView 列表(样式、文档待完善...)
 - [ ] Masonry 瀑布流(样式、文档待完善...)

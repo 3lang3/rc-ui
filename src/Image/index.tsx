@@ -2,9 +2,9 @@ import type { CSSProperties } from 'react';
 import * as React from 'react';
 import cn from 'classnames';
 import { Pic, DamageMap } from '@icon-park/react';
-import './image.less';
+import './index.less';
 
-type ObjectFitType = 'fill' | 'cover' | 'contain' | 'none';
+type ObjectFitType = 'fill' | 'cover' | 'contain' | 'none' | 'scale-down';
 type ImageRenderStatus = 'loading' | 'success' | 'error';
 
 type ImageProps = {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@zhp-fe/ui';
 
 export default () => (
-  <div style={{ background: '#f2f2f2' }}>
+  <div style={{ background: '#f2f2f2', padding: '0 0.24rem' }}>
     <h3>按钮类型</h3>
     <Button>default</Button>
     <br />
