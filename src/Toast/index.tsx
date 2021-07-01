@@ -3,8 +3,11 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import { Check, Attention } from '@icon-park/react';
 import cn from 'classnames';
 import { CircularIcon as Loader } from './Loader';
-import './toast.css';
+import './toast.less';
 import { Portal } from '../Popup';
+import { createNamespace } from '../utils';
+
+const [name, bem] = createNamespace('toast');
 
 interface ToastType {
   (): void;
@@ -72,14 +75,11 @@ type ToastItemProps = {
   type: NoticeType;
 };
 const ToastItem = ({ content, type }: ToastItemProps) => {
-  const cls = cn('local-toast-item', {
-    'p-8': type !== 'info',
-    'py-2.5 px-5': type === 'info',
-  });
+  const cls = cn(bem('item', [type]));
   return (
     <div className={cls}>
       {type !== 'info' && (
-        <div className="flex align-middle justify-center mb-2">
+        <div className={bem('icon')}>
           {(() => {
             if (type === 'loading') return <Loader />;
             if (type === 'success') return <Check theme="outline" size="34" fill="#fff" />;
@@ -99,7 +99,7 @@ const Toast = React.forwardRef<NotificationRef, any>((_, ref) => {
   const [toasts, setToasts] = React.useState<ToastItemTypeWithKey[]>([]);
 
   // 获取唯一key
-  const getKey = () => `local-toast-item-${new Date().getTime()}`;
+  const getKey = () => `${name}-${new Date().getTime()}`;
 
   // 移除toast
   const removeToast = (key: any) => {
@@ -153,8 +153,8 @@ const Toast = React.forwardRef<NotificationRef, any>((_, ref) => {
 
 function createNotification(): NotificationInstance {
   const container = document.createElement('div');
-  container.id = `local-toast-${new Date().getTime()}`;
-  container.className = 'fixed-center z-99999 local-toast';
+  container.id = `${name}-${new Date().getTime()}`;
+  container.className = bem();
   document.body.appendChild(container);
   let rootNotification: NotificationRef;
   render(

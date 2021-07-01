@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cls from 'classnames';
-import { createNamespace } from 'src/utils';
+import { createNamespace } from '../utils';
 import './index.less';
 
 export type RowAlign = 'top' | 'center' | 'bottom';

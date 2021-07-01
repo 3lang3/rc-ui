@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cls from 'classnames';
 import './index.less';
-import { createNamespace } from 'src/utils';
+import { createNamespace } from '../utils';
 
 type FlexProps = {
   align?: 'center' | 'baseline' | 'start' | 'end' | 'stretch';
