@@ -14,7 +14,7 @@
 - [ ] Popup 弹出层(样式、文档待完善...)
 - [ ] PullRefresh 下拉刷新(样式、文档待完善...)
 - [ ] Swipe 轮播图(样式、文档待完善...)
-- [x] Toast 轻提示(样式、文档待完善...)
+- [x] Toast 轻提示
 - [ ] Uploader 文件上传(样式、文档待完善...)
 - [ ] Tab 标签页
 - [ ] Form 表单(各种 FormItem: Radio, Checkbox...)
