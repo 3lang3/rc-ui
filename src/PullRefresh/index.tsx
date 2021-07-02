@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { useSetState } from 'ahooks';
 import * as React from 'react';
-import { getScrollTop, preventDefault } from '../utils';
+import { createNamespace, getScrollTop, preventDefault } from '../utils';
 import { useScrollParent } from '../hooks/useScrollParent';
 import { useTouch } from '../hooks/useTouch';
 import './pullrefresh.less';
@@ -9,7 +9,7 @@ import './pullrefresh.less';
 const DEFAULT_HEAD_HEIGHT = 50;
 const TEXT_STATUS = ['pulling', 'loosing', 'success'];
 
-const bem = (str?: string) => (str ? `local-pull-refresh__${str}` : 'local-pull-refresh');
+const [name, bem] = createNamespace('pull-refresh');
 
 type PullRefreshStatus = 'normal' | 'loading' | 'loosing' | 'pulling' | 'success';
 
